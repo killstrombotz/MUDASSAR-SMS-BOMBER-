@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KILLSTROM SMS BOMBER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg:#0a0a0a;
+            --neon:#ff0066;
+            --neon-2:#00ff88;
+            --neon-3:#0099ff;
+            --accent: rgba(255,0,102,0.12);
+        }
+
+        *{box-sizing:border-box}
+        html,body{height:100%; margin:0;}
+        
+        body {
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,0,102,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(0,255,136,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0,153,255,0.1) 0%, transparent 70%),
+                linear-gradient(135deg, #0a0a0a, #1a0a1a, #0a1a1a);
+            color: var(--neon);
+            font-family: 'Rajdhani', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Main Title */
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #00ff88;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0,255,136,0.5);
+        }
+
+        .sub-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #0099ff;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0,153,255,0.5);
+        }
+
+        /* Decorative lines */
+        .decorative-line {
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ff0066, 
+                #00ff88, 
+                #0099ff, 
+                transparent);
+            margin: 20px 0;
+            border-radius: 2px;
+            animation: lineGlow 3s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255,0,102,0.3);
+        }
+
+        @keyframes lineGlow {
+            0%, 100% { 
+                opacity: 0.7; 
+                box-shadow: 0 0 10px rgba(255,0,102,0.3);
+            }
+            50% { 
+                opacity: 1; 
+                box-shadow: 0 0 20px rgba(255,0,102,0.5),
+                           0 0 30px rgba(0,255,136,0.3);
+            }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: min(420px, 92%);
+            padding: 30px 25px;
+            border-radius: 15px;
+            background: rgba(10,10,10,0.8);
+            border: 2px solid rgba(255,0,102,0.3);
+            box-shadow: 
+                0 0 40px rgba(255,0,102,0.2),
+                0 0 60px rgba(0,255,136,0.1),
+                inset 0 0 40px rgba(0,153,255,0.1);
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
+
+        /* Inputs */
+        .input-group {
+            margin: 25px 0;
+        }
+
+        input{
+            width: 90%;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid rgba(255,0,102,0.4);
+            background: rgba(0,0,0,0.6);
+            color: #00ff88;
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            outline: none;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input:focus{
+            border-color: #0099ff;
+            box-shadow: 0 0 25px rgba(0,153,255,0.5);
+            transform: scale(1.02);
+            background: rgba(0,0,0,0.7);
+        }
+
+        /* Button */
+        .btn {
+            padding: 14px 35px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #ff0066, #0099ff);
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px rgba(255,0,102,0.4);
+        }
+
+        .btn:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(255,0,102,0.6);
+            background: linear-gradient(135deg, #0099ff, #ff0066);
+        }
+
+        /* WhatsApp link */
+        .whatsapp-link{
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            align-items:center;
+            margin-top:25px;
+            color:#00ff88;
+            text-decoration:none;
+            font-weight:600;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s;
+            border-radius:10px;
+            padding:12px 25px;
+            border: 2px solid rgba(0,255,136,0.4);
+            background: rgba(0,255,136,0.1);
+        }
+
+        .whatsapp-link:hover{
+            background: rgba(0,255,136,0.3);
+            box-shadow: 0 0 25px rgba(0,255,136,0.4);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        /* Result */
+        .result{
+            margin:20px 0;
+            min-height:60px;
+            border:2px solid rgba(0,153,255,0.4);
+            padding:15px;
+            border-radius:10px;
+            color:#00ff88;
+            background: rgba(0,153,255,0.05);
+            text-align:center;
+            font-style: italic;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(0,153,255,0.1);
+        }
+
+        /* Overlay */
+        .overlay{
+            position: fixed;
+            inset:0;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:50;
+            background: rgba(0,0,0,0.95);
+        }
+
+        .overlay-content{
+            padding:30px;
+            border-radius:15px;
+            border:2px solid rgba(255,0,102,0.4);
+            background: rgba(10,10,10,0.95);
+            color: #00ff88;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255,0,102,0.4);
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .overlay-content a {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 700;
+            display: block;
+            margin: 20px 0;
+            padding: 15px 25px;
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            transition: all 0.3s;
+            background: rgba(0,255,136,0.1);
+            font-size: 1.1rem;
+        }
+
+        .overlay-content a:hover {
+            background: #00ff88;
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .close-overlay {
+            cursor: pointer;
+            padding: 12px 25px;
+            border: 2px solid #ff0066;
+            border-radius: 10px;
+            margin-top: 15px;
+            transition: all 0.3s;
+            background: rgba(255,0,102,0.1);
+            font-weight: 600;
+            color: #ff0066;
+        }
+
+        .close-overlay:hover {
+            background: #ff0066;
+            color: #000;
+        }
+
+        /* Matrix rain effect */
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas class="matrix-rain" id="matrixRain"></canvas>
+
+    <!-- WhatsApp Overlay -->
+    <div class="overlay" id="whatsappOverlay">
+        <div class="overlay-content">
+            <h3 style="font-family: 'Orbitron', sans-serif; color: #ff0066;">JOIN OUR CHANNEL</h3>
+            <a href="https://whatsapp.com/channel/0029Vb6wpB8EVccOvGA5Lt1d" target="_blank">
+                <i class="fab fa-whatsapp"></i> JOIN WHATSAPP CHANNEL
+            </a>
+            <div class="close-overlay" onclick="closeOverlay()">Close</div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="main-title">KILLSTROM SMS BOMBER</div>
+        <div class="sub-title">KILLSTROM TECH</div>
+        
+        <div class="decorative-line"></div>
+        
+        <div class="input-group">
+            <input type="text" id="number" placeholder="Enter number e.g. 923XXXXXXXXX">
+            <input type="number" id="amount" placeholder="Enter amount" min="1" max="10">
+        </div>
+        
+        <button class="btn" onclick="sendSMS()">
+            <i class="fas fa-paper-plane"></i> SEND SMS
+        </button>
+
+        <div class="decorative-line"></div>
+
+        <!-- Result box -->
+        <div id="result" class="result"></div>
+
+        <a href="https://whatsapp.com/channel/0029Vb6wpB8EVccOvGA5Lt1d" target="_blank" class="whatsapp-link">
+            <i class="fab fa-whatsapp"></i> Join Our WhatsApp Channel
+        </a>
+    </div>
+
+    <script>
+        // Matrix Rain Effect
+        const canvas = document.getElementById('matrixRain');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = '0101010101010101KILLSTROM TECH';
+        const charArray = chars.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        
+        for(let i = 0; i < columns; i++) {
+            drops[i] = Math.random() * canvas.height;
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(10,10,10,0.03)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#ff0066';
+            ctx.font = 'bold ' + fontSize + 'px monospace';
+            
+            for(let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 35);
+
+        // Close overlay
+        function closeOverlay() {
+            document.getElementById('whatsappOverlay').style.display = 'none';
+        }
+
+        // SMS Bomber function
+        async function sendSMS() {
+            const number = document.getElementById('number').value.trim();
+            const amount = document.getElementById('amount').value.trim();
+            const resultDiv = document.getElementById('result');
+
+            if(!number || !amount){
+                alert("Please enter both number and amount");
+                return;
+            }
+
+            resultDiv.textContent = "Sending SMS...";
+
+            try {
+                await fetch(`https://shadowscriptz.xyz/shadowapisv4/smsbomberapi.php?number=${number}`);
+                resultDiv.textContent = "SMS Sent Successfully! ✅\nPlease Follow Our Channel 👇";
+                document.getElementById('whatsappOverlay').style.display = 'flex';
+            } catch (error) {
+                resultDiv.textContent = "SMS Sent! Please Follow Our Channel 👇";
+                document.getElementById('whatsappOverlay').style.display = 'flex';
+            }
+        }
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
